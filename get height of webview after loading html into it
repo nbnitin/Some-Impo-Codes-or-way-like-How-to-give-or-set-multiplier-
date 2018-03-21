@@ -1,0 +1,10 @@
+
+
+//Mark:- Webview delegates
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        getHeightOfWebView()
+    }
+    
+    func getHeightOfWebView() {
+      print(self.web.scrollView.contentSize.height)
+    }
