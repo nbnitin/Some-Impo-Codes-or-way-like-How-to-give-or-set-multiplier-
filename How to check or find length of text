@@ -1,0 +1,8 @@
+            let testString =  NSString(string: ("Your string" or variable))
+
+            let size = CGSize(width:.greatestFiniteMagnitude,height:40.0)
+
+            let attribute = [NSAttributedStringKey.font:UIFont.systemFont(ofSize:17)] // take care of font size, this is default font size of system.
+            let estimatedFrame = testString.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attribute, context: nil)
+            print(estimatedFrame.height)
+           
