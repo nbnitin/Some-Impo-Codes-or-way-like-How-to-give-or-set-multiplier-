@@ -1,0 +1,42 @@
+       
+        let str = "html string or content with divs and all only not with body"
+        var myHTMLText = """
+    <html>\
+    <head>\
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>\
+    @font-face { font-family: 'Metropolis'; src: url('Metropolis-ExtraBold.otf')}\
+    body { font-family: 'Roboto', sans-serif; font-size:26pt;  color: black; padding: 0pt;background:'red' }\
+    h1 { font-family: 'Metropolis', sans-serif; font-size: 36pt; color: black; }\
+    p { font-family: 'Roboto', sans-serif; font-size: 26pt }\
+    </style>
+    <style type='text/css'>\
+    .main_text {\
+       display: block;\
+       font-family:[fontName];\
+       text-decoration:none;\
+       font-size:[fontSize]px;\
+       color:[fontColor];\
+       line-height: [fontSize]px;\
+       font-weight:normal;\
+       text-align:[textAlign];\
+    }\
+    </style></head>\
+    [text]</html>
+    """
+
+
+        myHTMLText = myHTMLText.replacingOccurrences(of: "[text]", with: str)
+        myHTMLText = myHTMLText.replacingOccurrences(of: "[fontName]", with: "OpenSans")
+        myHTMLText = myHTMLText.replacingOccurrences(of: "[fontSize]", with: "12")
+        myHTMLText = myHTMLText.replacingOccurrences(of: "[fontColor]", with: "#00000")
+        myHTMLText = myHTMLText.replacingOccurrences(of: "[textAlign]", with: "left")
+
+        web = WKWebView()
+        web.navigationDelegate = self
+        web.backgroundColor = UIColor.red
+        web.loadHTMLString(myHTMLText, baseURL: nil)
+        web.scrollView.contentInset = .zero
+       
+
+
