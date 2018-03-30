@@ -1,0 +1,6 @@
+for i in socialIcons{
+            i.image = i.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            i.tintColor = UIColor.white // your color
+        }
+        
+        socialIcons is a outlet collection of image from storyboard
