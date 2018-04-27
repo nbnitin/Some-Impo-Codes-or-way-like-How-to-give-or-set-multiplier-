@@ -1,0 +1,21 @@
+parse authentication created in .htaccess file of website or api using almofire
+
+let user = "****"
+        let password = "****"
+        let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
+        let base64Credentials = credentialData.base64EncodedString(options: [])
+        
+        Alamofire.request(url,method:.get,encoding:URLEncoding.httpBody).authenticate(user: user, password: password)
+            .responseJSON(completionHandler: { response in});
+            
+            or for post request you can follow above or below as you want
+            
+             let headers: HTTPHeaders = [
+            "Content-Type":"application/json",
+            "Accept": "application/json;charset=utf-8",
+            "Authorization": "Basic \(base64Credentials)"
+            
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).authenticate(user: user, password: password).responseJSON(completionHandler: { response in
+          });
