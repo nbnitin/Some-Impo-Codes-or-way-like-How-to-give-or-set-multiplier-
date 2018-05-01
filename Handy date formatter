@@ -1,0 +1,20 @@
+//Mark:- Dateformatter convert string date into date data type
+    fileprivate lazy var dateFormatterNormal : DateFormatter =  {
+        [unowned self] in
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        df.locale = Locale(identifier: "en_US_POSIX")
+        df.timeZone = TimeZone(secondsFromGMT:0)
+        return df
+        }()
+        
+    //Mark:- Reconvert date format data type in string format (Month date, yyyy)
+    fileprivate lazy var dateFormatterString : DateFormatter =  {
+        [unowned self] in
+        let df = DateFormatter()
+        df.dateFormat = "MMM dd, yyyy"
+        df.locale = Locale(identifier: "en_US_POSIX")
+        df.timeZone = TimeZone(secondsFromGMT:0)
+        return df
+        }()
+    
