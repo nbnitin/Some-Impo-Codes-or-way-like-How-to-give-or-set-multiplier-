@@ -1,0 +1,7 @@
+Set or get height of image according to original image aspect ratio
+
+img.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "flam"), options: .continueInBackground, completed: {(image, error, cacheType, imageURL) in
+                let aspectRatio = Double((image?.size.width)!) / Double((image?.size.height)!)
+                let height = Double(self.view.frame.width) / aspectRatio
+                self.tableView.parallaxHeader.height = CGFloat(height)
+            })
