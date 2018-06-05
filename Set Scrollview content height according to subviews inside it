@@ -1,0 +1,13 @@
+  override func viewWillLayoutSubviews(){
+        super.viewWillLayoutSubviews()
+        
+        //you may get subview of scrollview using
+        // views = scroll.subviews
+        
+        let lastView = lastContainerView
+        let height = lastView?.frame.size.height
+        let pos = lastContainerView.frame.origin.y
+        let sizeOfContent = height! + pos + 10
+        scroll.contentSize.height = sizeOfContent
+        scroll.isUserInteractionEnabled = true
+    }
