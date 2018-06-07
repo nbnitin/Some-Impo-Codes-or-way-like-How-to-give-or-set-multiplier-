@@ -5,3 +5,11 @@ img.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "flam")
                 let height = Double(self.view.frame.width) / aspectRatio
                 self.tableView.parallaxHeader.height = CGFloat(height)
             })
+            
+            
+            //Setting constraints of imageview accordingly
+self.imgCateBanner.sd_setImage(with: url, completed: {(image, error, cacheType, imageURL) in
+                            let aspectRatio = Double((image?.size.width)!) / Double((image?.size.height)!)
+                            let height = Double(self.view.frame.width) / aspectRatio
+                            self.imgCatBannerConstraint.constant = CGFloat(height)
+                        })
