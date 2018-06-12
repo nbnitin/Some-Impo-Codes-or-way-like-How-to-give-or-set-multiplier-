@@ -1,0 +1,9 @@
+let storyBoard = UIStoryboard(name: "Temp", bundle: nil)
+        let alertController = storyBoard.instantiateViewController(withIdentifier: "postComment") as! PostCommentViewController
+        alertController.providesPresentationContextTransitionStyle = true
+        alertController.definesPresentationContext = true
+        alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        alertController.articleId = article.id
+        alertController.articleDetail = self
+        self.present(alertController, animated: true, completion: nil)
