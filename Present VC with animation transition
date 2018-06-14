@@ -1,0 +1,8 @@
+let transition = CATransition()
+        transition.duration = 0.2
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight //from left from bottom and from top also a sub
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "signUp") as! SignupViewController2
+        self.present(vc, animated: false, completion: nil)
