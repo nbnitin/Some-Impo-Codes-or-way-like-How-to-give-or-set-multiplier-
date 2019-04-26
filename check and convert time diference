@@ -1,0 +1,59 @@
+func checkCanRateReview(){
+        if ( date != "" ) {
+            
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            
+            
+            
+            let dt = dateFormatter.date(from: date)
+            let newDate =  dt!.addingTimeInterval(TimeInterval(15.0 * 60.0))
+            let cdtString = dateFormatter.string(from: Date())
+            let cdt1 = dateFormatter.date(from: cdtString)
+            print(cdt1?.timeIntervalSince(dt!))
+            
+            dateFormatter.timeZone = TimeZone.current
+            dateFormatter.dateFormat = "h:mm a"
+            
+            let cdt = dateFormatter.string(from: Date())
+            
+            //print(dateFormatter.string(from: dt!))
+            
+            
+            let dateDiff = findDateDiff(time1Str: cdt, time2Str: dateFormatter.string(from: newDate))
+            print(dateDiff)
+            
+            if ( dateDiff < 0 ) {
+                self.canRateReview = true
+            } else {
+                self.canRateReview = false
+                self.reviewAfter = Int(dateDiff)
+            }
+        }
+    }
+    
+    func findDateDiff(time1Str: String, time2Str: String) -> Double {
+        let timeformatter = DateFormatter()
+        timeformatter.dateFormat = "h:mm a"
+        timeformatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        guard let time1 = timeformatter.date(from: time1Str),
+            let time2 = timeformatter.date(from: time2Str) else { return 0.0 }
+        
+        //You can directly use from here if you have two dates
+        
+        let interval = time2.timeIntervalSince(time1)
+        let hour = interval / 3600;
+        let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
+        let intervalInt = Int(interval)
+        
+        let difference = Calendar.current.dateComponents([.hour, .minute], from: time1, to: time2)
+        let formattedString = String(format: "%02ld%02ld", difference.hour!, difference.minute!)
+        print(formattedString)
+        
+        return minute
+        //print( "\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes")
+    }
+    
