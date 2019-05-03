@@ -1,0 +1,5 @@
+let d = [4: ["Jennifer", "Christopher"], 3: ["Kyle"], 6: ["Kareem"]]
+        let sortedDic = d.sorted { (aDic, bDic) -> Bool in
+            return aDic.key < bDic.key
+        }
+        
