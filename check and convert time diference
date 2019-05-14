@@ -9,7 +9,7 @@ func checkCanRateReview(){
             
             
             let dt = dateFormatter.date(from: date)
-            let newDate =  dt!.addingTimeInterval(TimeInterval(15.0 * 60.0))
+            let newDate =  dt!.addingTimeInterval(TimeInterval(15.0 * 60.0)) //converting minutes into seconds
             let cdtString = dateFormatter.string(from: Date())
             let cdt1 = dateFormatter.date(from: cdtString)
             print(cdt1?.timeIntervalSince(dt!))
@@ -24,7 +24,7 @@ func checkCanRateReview(){
             
             let dateDiff = findDateDiff(time1Str: cdt, time2Str: dateFormatter.string(from: newDate))
             print(dateDiff)
-            
+            //use this canRateReview to enable/disable your logic or show alert...
             if ( dateDiff < 0 ) {
                 self.canRateReview = true
             } else {
