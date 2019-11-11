@@ -17,4 +17,70 @@
         df.timeZone = TimeZone(secondsFromGMT:0)
         return df
         }()
+        
+        lazy var dateFormatterLocal : DateFormatter =  {
+        [unowned self] in
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        df.locale = Locale.current
+        return df
+    }()
+    
+    lazy var dateFormatterLocalFormatSecond : DateFormatter =  {
+    [unowned self] in
+        let df = DateFormatter()
+        df.dateFormat = "yyyy/MM/dd"
+        df.locale = Locale.current
+        return df
+    }()
+    
+    
+    lazy var dateFormatterNormalpartTwo : DateFormatter =  {
+        [unowned self] in
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        df.locale = Locale(identifier: "en_US_POSIX")
+        df.timeZone = TimeZone(secondsFromGMT:0)
+        return df
+    }()
+    
+    lazy var dateFormatterToUTC : DateFormatter =  {
+        [unowned self] in
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        df.timeZone = TimeZone(abbreviation: "UTC")
+        return df
+    }()
+    
+    
+    lazy var dateFormatter2 : DateFormatter =  {
+        [unowned self] in
+        let df = DateFormatter()
+        df.dateFormat = "MMMM dd, yyyy"
+        df.locale = Locale(identifier: "en_US_POSIX")
+        df.timeZone = TimeZone(secondsFromGMT:0)
+        return df
+    }()
+    
+    lazy var dateFormatterForFilter : DateFormatter =  {
+        [unowned self] in
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        df.locale = Locale(identifier: "en_US_POSIX")
+        df.timeZone = TimeZone(secondsFromGMT:0)
+        return df
+    }()
+    
+    lazy var timeFormatter : DateFormatter =  {
+    [unowned self] in
+        let df = DateFormatter()
+        df.setLocalizedDateFormatFromTemplate("jj:mm") //By using "jj" you can get a format which best matches the user's current settings:
+        //to test change settings from general>datetime>24hrs
+    // kill application and restart your app...
+        //df.dateFormat = "hh:mm a"
+        df.locale = Locale(identifier: "en_US_POSIX")
+        df.timeZone = TimeZone(secondsFromGMT:0)
+        return df
+   
+    }()
     
