@@ -1,0 +1,62 @@
+do {
+            let items = ExtensionFurtherDetailParentClass.shared.getCallForwarding()
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(items)
+                
+                var convertedString = String(data: jsonData, encoding: String.Encoding.utf8) // the data will be converted to the string
+                print(convertedString!) // <-- here is ur string
+                self.txtShowTest.text =  convertedString!
+            
+            self.txtShowTest.text += "\r--Call forwarding targets--\r"
+            let item2 = ExtensionFurtherDetailParentClass.shared.getCallForwardingTargets() //convert model/ class into JSON
+
+            let jsonData1 = try jsonEncoder.encode(item2)
+            
+            var convertedString1 = String(data: jsonData1, encoding: String.Encoding.utf8) // the data will be converted to the string
+            print(convertedString1!) // <-- here is ur string
+            self.txtShowTest.text +=  convertedString1!
+            
+//            let item2 = ExtensionFurtherDetailParentClass.shared.getCallForwardingTargets() // it converts [String:AnyObject] dictionary into json
+//            let data1 =  try JSONSerialization.data(withJSONObject: item2, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
+//             convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
+//            print(convertedString!) // <-- here is ur string
+//            self.txtShowTest.text +=  convertedString!
+//                //Toast.showToast(message: message["type"] as! String, position: .BOTTOM, length: .DEFAULT)
+            
+            
+        } catch let myJSONError {
+            print(myJSONError)
+        }
+        
+        
+        //sample model class
+        class CallForwarding:Codable {
+    var disabled : Bool!
+    var conditional : [ConditionalForwarding] = [ConditionalForwarding]()
+    var unConditional : UnConditionalForwarding = UnConditionalForwarding()
+}
+
+class ConditionalForwarding:Codable {
+    var enabled : Bool!
+    var source : String?
+    var target : Int?
+    var timeOut : String?
+    var key : String!
+}
+
+class UnConditionalForwarding:Codable {
+    var enabled : Bool!
+    var source : String?
+    var target : Int?
+}
+
+//targets
+class CallForwardingTargets:Codable {
+    var is_deletable: Bool!
+    var id: Int!
+    var phone: String!
+    var name: String?
+    var type: String!
+    var type_id: Int!
+}
+
