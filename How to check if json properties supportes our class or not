@@ -1,0 +1,21 @@
+
+
+
+class must be nsobject type
+class hello : NSObject {
+  
+  override func setValue(value:AnyObject?,forKey key:String) {
+  let upperLetter = String(key.character.first!).uppercaseString
+let range = key.startIndex...key.startIndex.adavnceBy(0)
+let selectorString = key.stringReplacingCharacterInRange(range,upperLetter)
+let selector = NSSelectorFromString("set\(selectorString)")
+let response = self.responsdToSelector(selector)
+
+if ( response ) {
+super.setValue(value,forKey : key)
+pass
+} else {
+fail
+}
+  }
+}
